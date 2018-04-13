@@ -2,6 +2,8 @@ https://www.blog.florisdroppert.nl/
 
 :tada: My first laravel project :tada:
 
+You need to be registered to enter the website by default. That can be changed in the routes/web.php. By removing "->middleware('auth');".
+
 Register Page is disabled by default,
 Go to routes/web.php and uncomment it for the register page.
 
