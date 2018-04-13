@@ -17,7 +17,7 @@ class Posts extends Migration
             $table->increments('id');
             $table->char('title');
             $table->MEDIUMTEXT('post_content');
-            $table->int('draft');
+            $table->integer('draft');
             $table->char('tags');
             $table->timestamps();
         });
