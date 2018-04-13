@@ -12,7 +12,6 @@ If you want to enable it for the live version go to App/Post.php and uncomment t
 
 TO-DO LIST:
 
-- Pagination
 - Thumbnails
 - Categories
 - Save image as file instead of Base64
