@@ -10,7 +10,8 @@
                     <div class="content">
                         {!! $value->post_content !!}
                     </div>
-                    <p>{{ date_format($value->created_at, 'j F, Y g:ia' )}}</p>
+                    {{--<p>{{ date_format($value->created_at, 'j F, Y g:ia' )}}</p>--}}
+                    <?php echo "<p>".date('j F, Y g:ia', strtotime($value->created_at))."</p>";  ?>
                     <p>Kerntaken: {{ str_replace(",",", ",$value->tags) }}</p>
                 </div>
 
