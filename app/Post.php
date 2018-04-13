@@ -9,6 +9,8 @@ use Laravel\Scout\Searchable;
 class Post extends Model
 {
 
+//    use Searchable;
+
 
     /**
      * CODE AGOLIA SEARCH
@@ -16,7 +18,6 @@ class Post extends Model
 
 //    DISABLED IN DEVELOPMENT MODE
 
-//    use Searchable;
 //
 //    public function toSearchableArray()
 //    {

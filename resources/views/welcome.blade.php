@@ -20,7 +20,7 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-        ">Powered by Laravel and Vue.js
+        ">Powered by Laravel
         </div>
     </div>
 @endsection

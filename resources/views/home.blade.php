@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: 80px; margin-bottom: 80px;">
         @foreach($home_posts as $key => $value)
-
-            <div class="row justify-content-center" style="margin-top: 80px; margin-bottom: 50px;">
+            <div class="row justify-content-center" style=" margin-bottom: 50px;">
                 <div class="col-md-10">
                     <a href="{{ url('/post/'.$value->id) }}" style="padding-top: 30px;">
                         <h2>{{$value->title}}</h2></a>
@@ -20,8 +19,8 @@
                     {!! str_limit(strip_tags(preg_replace('#(<h5.*?>).*?(</h5>)#', '$1$2', $value->post_content)), $limit = 400, $end = ' [...]') !!}
                 </div>
             </div>
-
         @endforeach
+            {{$home_posts->links()}}
     </div>
 
 @endsection
