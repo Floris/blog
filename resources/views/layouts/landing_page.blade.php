@@ -106,6 +106,7 @@
     </style>
 </head>
 <body class="color-change-2x">
+<a href="https://github.com/Floris/blog" target="_blank" style="color: white; z-index:10; cursor:pointer; position:absolute; margin: 18px 30px;">Github</a>
 
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))

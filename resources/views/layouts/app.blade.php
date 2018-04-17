@@ -12,9 +12,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
+
+
+    @if(Auth::user()->isAdministrator())
+        <nav class="navbar navbar-dark sticky-top bg-dark"  style="font-size: 13px;">
+            <a class="col-sm-3 col-md-2 dash-menu1" href="{{ url('/dashboard') }}"><i class="fa fa-tachometer" aria-hidden="true"></i>
+                Blog van Floris</a>
+            {{--@if(Request::getPathInfo()=== '/home')--}}
+            {{--@else--}}
+                {{--@foreach($post as $key => $value)--}}
+                {{--<a class="" href="{{ url('/dashboard/post/'.$value->id) }}" style="color:white !important;">Edit Post</a>--}}
+                {{--@endforeach--}}
+            {{--@endif--}}
+
+        </nav>
+    @endif
+
+
+
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
@@ -49,14 +68,14 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 
-                                @if(Auth::user()->isAdministrator())
-                                    <a style="color:red;" class="dropdown-item" href="{{ url('/dashboard') }}">
-                                        Dashboard
-                                    </a>
-                                @endif
+                                {{--@if(Auth::user()->isAdministrator())--}}
+                                {{--<a class="dropdown-item" href="{{ url('/dashboard') }}">--}}
+                                {{--Dashboard--}}
+                                {{--</a>--}}
+                                {{--@endif--}}
 
 
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a style="color:red;" class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -146,7 +165,7 @@
                     suggestion: function (suggestion) {
 //                        suggestion.objectID
 
-                        return "<a href='/post/"+suggestion.objectID+"'>"
+                        return "<a href='/post/" + suggestion.objectID + "'>"
                                 + suggestion.title +
                                 "</a>";
 

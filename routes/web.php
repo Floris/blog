@@ -30,7 +30,6 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
-
 Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
 
 //GET POST
@@ -39,12 +38,18 @@ Route::get('post/{id}', 'HomeController@post')->middleware('auth');
 //SEND COMMENT
 Route::post('post/{id}', 'CommentController@store')->middleware('auth');
 
+//If Auth::user()->email = useremail
+//Then load removecomment controller
+
+//DELETE COMMENT
+Route::post('post/comment/{id}', 'CommentController@deleteComment')->middleware('auth');
+
 //SEARCH
 Route::post('home', 'HomeController@update')->middleware('auth');
 
-
 //GET DRAFT PREVIEW PAGE
 Route::get('preview/{id}', 'PostController@previewPage')->middleware('is.admin')->middleware('auth');
+
 
 Route::group(['middleware' => 'is.admin'], function () {
 

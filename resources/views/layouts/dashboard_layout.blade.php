@@ -13,11 +13,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/summernote.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 <body>
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url('/home') }}" style="color:white !important;">Blog van Floris</a>
+<nav class="navbar navbar-dark sticky-top bg-dark "  style="font-size: 13px;">
+    <a class="col-sm-3 col-md-2 dash-menu1" href="{{ url('/home ') }}"><i class="fa fa-tachometer" aria-hidden="true"></i>
+        Blog van Floris</a>
     {{--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">--}}
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">

@@ -40,7 +40,8 @@ class CommentController extends Controller
 
     public function deleteComment($id){
 
-        Comment::findOrFail($id)->delete();
+//        Comment::findOrFail($id)->delete();
+        echo Auth::user()->email;
         return redirect('dashboard/comments');
 
     }

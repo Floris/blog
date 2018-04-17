@@ -4,6 +4,9 @@
     <div class="container" style="margin-top: 45px; margin-bottom: 50px;">
         @foreach($post as $key => $value)
             <a href="{{ url('/home')}}">Blog &lt; {{$value->title}}</a>
+            @if(Auth::user()->isAdministrator())
+                <a href="{{ url('/dashboard/post/'.$value->id) }}" style="float: right;">Edit Post</a>
+            @endif
             <div class="row justify-content-center post">
                 <div class="col-md-10">
                     <h2>{{$value->title}}</h2>
@@ -11,7 +14,7 @@
                         {!! $value->post_content !!}
                     </div>
                     {{--<p>{{ date_format($value->created_at, 'j F, Y g:ia' )}}</p>--}}
-                    <?php echo "<p>".date('j F, Y g:ia', strtotime($value->created_at))."</p>";  ?>
+                    <?php echo "<p>" . date('j F, Y g:ia', strtotime($value->created_at)) . "</p>";  ?>
                     <p>Kerntaken: {{ str_replace(",",", ",$value->tags) }}</p>
                 </div>
 
@@ -24,6 +27,13 @@
                             <input type="text" name="reply_id" id="reply_id" value="{{$comment->id}}"
                                    style="display: none;">
                             <div class="comment_header">
+                                @if(Auth::user()->email == $comment->user_email)
+
+                                    <button style="float: right; background:#870000; color:white;"
+                                            v-on:click="change('{{$comment->user_email}}', {{$comment->id}})">Delete
+                                    </button>
+                                @endif
+
                                 <p>{{$comment->user_email}}
                                     says:
                                 </p>
@@ -39,6 +49,11 @@
                             @foreach($replies as $key => $reply)
                                 <div class="reply_comment">
                                     <div class="comment_header">
+                                        @if(Auth::user()->email == $comment->user_email)
+                                            <button style="float: right; background:#870000; color:white;"
+                                                    v-on:click="change('{{$comment->user_email}}', {{$comment->id}})">Delete
+                                            </button>
+                                        @endif
                                         <p>{{$reply->user_email}} says:</p>
                                     </div>
                                     <p class="comment_content">{{$reply->comment}}</p>
@@ -53,6 +68,11 @@
                                     @foreach($replies_2nd_row as $key => $reply)
                                         <div class="reply_comment">
                                             <div class="comment_header">
+                                                @if(Auth::user()->email == $comment->user_email)
+                                                    <button style="float: right; background:#870000; color:white;"
+                                                            v-on:click="change('{{$comment->user_email}}', {{$comment->id}})">Delete
+                                                    </button>
+                                                @endif
                                                 <p>{{$reply->user_email}} says:</p>
                                             </div>
                                             <p class="comment_content">{{$reply->comment}}</p>
