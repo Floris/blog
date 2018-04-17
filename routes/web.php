@@ -38,11 +38,8 @@ Route::get('post/{id}', 'HomeController@post')->middleware('auth');
 //SEND COMMENT
 Route::post('post/{id}', 'CommentController@store')->middleware('auth');
 
-//If Auth::user()->email = useremail
-//Then load removecomment controller
-
 //DELETE COMMENT
-Route::post('post/comment/{id}', 'CommentController@deleteComment')->middleware('auth');
+Route::post('post/comment/{id}', 'CommentController@deleteCommentFromPost')->middleware('auth');
 
 //SEARCH
 Route::post('home', 'HomeController@update')->middleware('auth');
@@ -94,7 +91,7 @@ Route::group(['middleware' => 'is.admin'], function () {
         Route::get('comments', 'DashBoardController@getComments')->middleware('auth');
 
         //DELETE COMMENT
-        Route::post('comment/{id}', 'CommentController@deleteComment')->middleware('auth');
+        Route::post('comment/{id}', 'CommentController@deleteCommentFromCMS')->middleware('auth');
 
         //GET USERS
         Route::get('users', 'DashBoardController@getUsers')->middleware('auth');

@@ -27,34 +27,41 @@
                             <input type="text" name="reply_id" id="reply_id" value="{{$comment->id}}"
                                    style="display: none;">
                             <div class="comment_header">
-                                @if(Auth::user()->email == $comment->user_email)
+                                @if(Auth::user()->email == $comment->user_email || Auth::user()->isAdministrator())
 
-                                    <button style="float: right; background:#870000; color:white;"
-                                            v-on:click="change('{{$comment->user_email}}', {{$comment->id}})">Delete
-                                    </button>
+
+                                    <form action="{{ url('post/comment/'.$comment->id) }}" method="post">
+                                        @csrf
+                                        <input type="submit" style="background:#870000; color:white; float: right;"
+                                               value="Delete">
+                                    </form>
                                 @endif
 
-                                <p>{{$comment->user_email}}
-                                    says:
-                                </p>
+                                <p style="margin-bottom: -2.5px;">{{$comment->user_email}} says:</p>
+                                <div style="font-size: 14px;"><?php echo date('j F, g:ia', strtotime($comment->created_at));  ?></div>
                             </div>
 
                             <p class="comment_content">{{ $comment->comment }}</p>
                             <button v-on:click="change('{{$comment->user_email}}', {{$comment->id}})">Reply
                             </button>
                         </div>
+
                         {{--SECOND ROW OF COMMENTS--}}
                         <?php $replies = DB::table('comments')->select('*')->where('reply_id', '=', $comment->id)->orderBy('created_at', 'DESC')->get() ?>
                         <div class="reply">
                             @foreach($replies as $key => $reply)
                                 <div class="reply_comment">
                                     <div class="comment_header">
-                                        @if(Auth::user()->email == $comment->user_email)
-                                            <button style="float: right; background:#870000; color:white;"
-                                                    v-on:click="change('{{$comment->user_email}}', {{$comment->id}})">Delete
-                                            </button>
+                                        @if(Auth::user()->email == $reply->user_email || Auth::user()->isAdministrator())
+                                            <form action="{{ url('post/comment/'.$reply->id) }}" method="post">
+                                                @csrf
+                                                <input type="submit"
+                                                       style="background:#870000; color:white; float: right;"
+                                                       value="Delete">
+                                            </form>
                                         @endif
-                                        <p>{{$reply->user_email}} says:</p>
+                                        <p style="margin-bottom: -2.5px;">{{$reply->user_email}} says:</p>
+                                        <div style="font-size: 14px;"><?php echo date('j F, g:ia', strtotime($comment->created_at));  ?></div>
                                     </div>
                                     <p class="comment_content">{{$reply->comment}}</p>
                                     <button v-on:click="change('{{$reply->user_email}}', {{$reply->id}})">
@@ -68,12 +75,16 @@
                                     @foreach($replies_2nd_row as $key => $reply)
                                         <div class="reply_comment">
                                             <div class="comment_header">
-                                                @if(Auth::user()->email == $comment->user_email)
-                                                    <button style="float: right; background:#870000; color:white;"
-                                                            v-on:click="change('{{$comment->user_email}}', {{$comment->id}})">Delete
-                                                    </button>
+                                                @if(Auth::user()->email == $reply->user_email || Auth::user()->isAdministrator())
+                                                    <form action="{{ url('post/comment/'.$reply->id) }}" method="post">
+                                                        @csrf
+                                                        <input type="submit"
+                                                               style="background:#870000; color:white; float: right;"
+                                                               value="Delete">
+                                                    </form>
                                                 @endif
-                                                <p>{{$reply->user_email}} says:</p>
+                                                <p style="margin-bottom: -2.5px;">{{$reply->user_email}} says:</p>
+                                                <div style="font-size: 14px;"><?php echo date('j F, g:ia', strtotime($comment->created_at));  ?></div>
                                             </div>
                                             <p class="comment_content">{{$reply->comment}}</p>
                                         </div>

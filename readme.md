@@ -2,11 +2,13 @@ https://www.blog.florisdroppert.nl/
 
 :tada: My first laravel project :tada:
 
-
+<br />
 
 You need to be registered to enter the website by default. That can be changed in the routes/web.php. By removing:
 
 ->middleware('auth');
+
+<br />
 
 Register Page is disabled by default,
 Go to routes/web.php and uncomment :
@@ -17,19 +19,21 @@ Go to routes/web.php and uncomment :
 
 To enable registering.
 
+<br />
 
 Algolia search is disabled for localhost,
 If you want to enable it for the live version go to App/Post.php and uncomment the code.
 
-
+<br />
 
 TO-DO LIST
 
+- Comment system improvements
+- Save image as file instead of Base64.
 - Thumbnails.
 - Categories.
-- Save image as file instead of Base64.
 - Popup when trying to delete a post.
-
+- Draft system improvements
 
 
 BUGS
@@ -37,7 +41,7 @@ BUGS
 - Reset Password doesn't work.
 - Algolia won't update it's db when a post is updated.
 
-
+<br />
 
 :star: INSTALLATION :star:
 
@@ -50,10 +54,14 @@ BUGS
 - php artisan migrate
 - php artisan db:seed
 
+<br />
+
 website default login
 
 login email: admin@gmail.com
 
 login password: secret
+
+<br />
 
 :exclamation: To add "Administrator" role to an user. Go in the database to user_role and add user_id to the role_id. The role_id of "Administrator" is by default 1.

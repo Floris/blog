@@ -6,11 +6,11 @@ namespace App\Http\Controllers;
 use App\Comment;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 
 class CommentController extends Controller
 {
-
 //    public function getComments($id)
 //    {
 //        $comments = Comment::
@@ -21,7 +21,6 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-
         $comment = $request->validate([
             'comment' => 'required',
         ]);
@@ -35,15 +34,23 @@ class CommentController extends Controller
 
         $comment->save();
         return back();
-
     }
 
-    public function deleteComment($id){
-
-//        Comment::findOrFail($id)->delete();
-        echo Auth::user()->email;
-        return redirect('dashboard/comments');
-
+    public function deleteCommentFromCMS($id)
+    {
+        Comment::
+            where('id', $id)
+            ->delete();
+        return back();
     }
 
+    public function deleteCommentFromPost($id)
+    {
+        Comment::
+        where('id', $id)
+//            ->where('user_email', Auth::user()->email)
+            ->delete();
+        return back();
     }
+
+}
