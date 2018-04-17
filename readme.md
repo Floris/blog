@@ -42,6 +42,7 @@ BUGS:
 website default login
 
 login email: admin@gmail.com
+
 login password: secret
 
 :exclamation: To add "Administrator" role to an user. Go in the database to user_role and add user_id to the role_id. The role_id of "Administrator" is by default 1.
