@@ -46,10 +46,17 @@ class CommentController extends Controller
 
     public function deleteCommentFromPost($id)
     {
-        Comment::
-        where('id', $id)
-//            ->where('user_email', Auth::user()->email)
-            ->delete();
+        if(Auth::user()->isAdministrator()){
+            Comment::
+                where('id', $id)
+                ->delete();
+        }else{
+            Comment::
+                where('id', $id)
+                ->where('user_email', Auth::user()->email)
+                ->delete();
+        }
+
         return back();
     }
 
