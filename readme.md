@@ -2,6 +2,8 @@ https://www.blog.florisdroppert.nl/
 
 :tada: My first laravel project :tada:
 
+
+
 You need to be registered to enter the website by default. That can be changed in the routes/web.php. By removing:
 
 ->middleware('auth');
@@ -12,6 +14,8 @@ Go to routes/web.php and uncomment :
 //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 //Route::post('register', 'Auth\RegisterController@register');
+
+To enable registering.
 
 
 Algolia search is disabled for localhost,
