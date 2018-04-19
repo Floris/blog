@@ -70,15 +70,22 @@ class PostController extends Controller
             $request->tags = implode(",", $aa);
         }
 
-        Post::where('id', $id)
-            ->update([
-                'title' => $request->title,
-                'post_content' => $request->post_content,
-                'draft' => $request->draft,
-                'tags' => $request->tags,
-            ]);
+        // Post::where('id', $id)
+        //     ->update([
+        //         'title' => $request->title,
+        //         'post_content' => $request->post_content,
+        //         'draft' => $request->draft,
+        //         'tags' => $request->tags,
+        //     ]);
 
-//        Post::select('*')->toSearchableArray();
+        $post = Post::find($id);
+
+        $post->title = $request->title;
+        $post->post_content = $request->post_content;
+        $post->draft = $request->draft;
+        $post->tags = $request->tags;
+
+        $post->save(); //this will UPDATE the record with id=$id
 
         return back();
     }
