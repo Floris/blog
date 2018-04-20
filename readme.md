@@ -36,12 +36,14 @@ TO-DO LIST
 
 BUGS
 
-- Reset Password doesn't work.
+-
 
 
 <br />
 
 :star: INSTALLATION :star:
+
+Make sure you have composer installed
 
 - Git clone https://github.com/Floris/blog.git
 - Create an .env file from .env.example
@@ -52,13 +54,16 @@ BUGS
 - php artisan migrate
 - php artisan db:seed
 
+If you don't have Laravel Valet Or
+- php artisan serve
+
 <br />
 
-website default login
+Website default login
 
-login email: admin@gmail.com
+Login email: admin@gmail.com
 
-login password: secret
+Login password: secret
 
 <br />
 

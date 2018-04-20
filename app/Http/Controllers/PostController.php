@@ -16,7 +16,7 @@ class PostController extends Controller
     public function createPost(Request $request)
     {
 
-//        $file = Request::file('file');git
+//        $file = Request::file('file');
 //        $destinationPath = public_path().'/image/';
 //        $filename = $file->getClientOriginalName();
 //        $file->move($destinationPath, $filename);
