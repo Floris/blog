@@ -6,7 +6,7 @@
             <h1 class="h2">Create New Post</h1>
         </div>
 
-        <form action="{{url()->full()}}" method="POST">
+        <form action="{{url()->full()}}" method="POST" enctype="multipart/form-data">
 
             <div class="form-group">
                 <input type="text" class="form-control" id="exampleFormControlInput1"

@@ -121,20 +121,17 @@
     $(document).ready(function() {
         $('#summernote').summernote({
             height: 650,
-//            popover: {
-//                image: [],
-//                link: [],
-//                air: []
-//            }
         });
     });
 
+
+//UPLOAD IMAGE
 //$.ajaxSetup({
 //    headers: {
 //        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 //    }
 //});
-
+//
 //$(document).ready(function(){
 //
 //    $.ajaxSetup({
