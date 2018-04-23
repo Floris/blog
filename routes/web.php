@@ -28,9 +28,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.request');
 
 
@@ -90,6 +88,9 @@ Route::group(['middleware' => 'is.admin'], function () {
 
         //DELETE DRAFT
         Route::post('draft/{id}/delete', 'PostController@deletePost')->middleware('auth');
+
+        //DELETE CHECKBOX DRAFT
+        Route::post('/posts/checkboxes', 'PostController@deleteMultiplePosts')->middleware('auth');
 
         //GET COMMENTS
         Route::get('comments', 'DashBoardController@getComments')->middleware('auth');

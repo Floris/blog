@@ -74,6 +74,58 @@ class PostController extends Controller
         return redirect('/dashboard');
     }
 
+    public function deleteMultiplePosts(Request $request)
+    {
+
+        if (isset($request->make_draft)) {
+            if (is_array($request->post_id_make_public)) {
+                foreach ($request->post_id_make_public as $value) {
+                    Post::where('id', $value)
+                        ->update([
+                            'draft' => 1
+                        ]);
+                }
+            } else {
+                Post::where('id', $request->post_id_make_public)
+                    ->update([
+                        'draft' => 1
+                    ]);
+            }
+        }else{
+            if (isset($request->post_id_make_public)) {
+                if (is_array($request->post_id_make_public)) {
+                    foreach ($request->post_id_make_public as $value) {
+                        Post::where('id', $value)
+                            ->update([
+                                'draft' => NULL
+                            ]);
+                    }
+                } else {
+                    Post::where('id', $request->post_id_make_public)
+                        ->update([
+                            'draft' => NULL
+                        ]);
+                }
+            }
+        }
+
+        if (isset($request->post_id_delete)) {
+            if (is_array($request->post_id_delete)) {
+                foreach ($request->post_id_delete as $value) {
+                    Post::findOrFail($value)->delete();
+                    Comment::where('page_id', $value)->delete();
+//                debug
+//                echo "DELETE::   " . $value;
+                }
+            } else {
+                Post::findOrFail($request->post_id)->delete();
+                Comment::where('page_id', $request->post_id)->delete();
+            }
+        }
+
+        return back();
+    }
+
     public function backToDraftPost($id)
     {
         Post::where('id', $id)

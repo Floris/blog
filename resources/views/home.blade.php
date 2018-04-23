@@ -20,7 +20,7 @@
                 </div>
             </div>
         @endforeach
-            {{$home_posts->links()}}
+           {{$home_posts->links()}}
     </div>
 
 @endsection

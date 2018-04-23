@@ -10,48 +10,43 @@
         <div class="container" style="margin-top: 50px">
 
 
-
             <div class="row justify-content-center">
                 {{--<div class="col-md-10">--}}
+
                 <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Tags</th>
-                        <th scope="col">Date</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        {{--<th scope="col"></th>--}}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($dash_posts as $key => $value)
-
+                    <form action="{{ url('/dashboard/posts/checkboxes') }}" method="post">
+                        @csrf
+                        <thead>
                         <tr>
-                            <td scope="row">{{$value->id}}</td>
-                            <td><a href="{{ url('/dashboard/post/'.$value->id) }}">{{$value->title}}</a></td>
-                            <td> [...] </td>
-                            <td>Published on: {{ date_format($value->created_at, 'j F, Y g:ia' )}}</td>
-                            <td><a href="/preview/{{$value->id}}">Preview</a></td>
-                            <td>
-                                <form action="{{ url('/dashboard/post/'.$value->id).'/delete' }}" method="post">
-                                    <input type="text" name="id" value="{{$value->id}}" style="display: none;">
-                                    @csrf
-                                    <input type="submit" style="background-color: #ef5777; color:white;" value="Delete">
-                                </form>
-                            </td>
-                            {{--<td>--}}
-                                {{--<form action="{{ url('/dashboard/post/'.$value->id).'/post' }}" method="post">--}}
-                                    {{--<input type="text" name="id" value="{{$value->id}}" style="display: none;">--}}
-                                    {{--@csrf--}}
-                                    {{--<input type="submit" value="post">--}}
-                                {{--</form>--}}
-                            {{--</td>--}}
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Tags</th>
+                            <th scope="col">Date</th>
+                            <th scope="col"></th>
+                            <th scope="col"><input type="submit" style="background-color: #71dd8a; color:white;"
+                                                   value="Public"></th>
+                            <th scope="col"><input type="submit" style="background-color: #ef5777; color:white;"
+                                                   value="Delete"></th>
+                            {{--<th scope="col"></th>--}}
                         </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($dash_posts as $key => $value)
 
-                    @endforeach
-                    </tbody>
+                            <tr>
+                                <td scope="row">{{$value->id}}</td>
+                                <td><a href="{{ url('/dashboard/post/'.$value->id) }}">{{$value->title}}</a></td>
+                                <td> [...]</td>
+                                <td>Published on: {{ date_format($value->created_at, 'j F, Y g:ia' )}}</td>
+                                <td><a href="/preview/{{$value->id}}">Preview</a></td>
+                                <td><input type="checkbox" name="post_id_make_public[]" value="{{$value->id}}"></td>
+                                <td><input type="checkbox" name="post_id_delete[]" value="{{$value->id}}"></td>
+
+                            </tr>
+
+                        @endforeach
+                        </tbody>
+                    </form>
                 </table>
                 {{--</div>--}}
             </div>
