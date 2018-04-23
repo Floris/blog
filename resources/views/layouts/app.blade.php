@@ -18,20 +18,19 @@
 <body>
 
 
-    @if(Auth::user()->isAdministrator())
-        <nav class="navbar navbar-dark sticky-top bg-dark"  style="font-size: 13px;">
-            <a class="col-sm-3 col-md-2 dash-menu1" href="{{ url('/dashboard') }}"><i class="fa fa-tachometer" aria-hidden="true"></i>
-                Blog van Floris</a>
-            {{--@if(Request::getPathInfo()=== '/home')--}}
-            {{--@else--}}
-                {{--@foreach($post as $key => $value)--}}
-                {{--<a class="" href="{{ url('/dashboard/post/'.$value->id) }}" style="color:white !important;">Edit Post</a>--}}
-                {{--@endforeach--}}
-            {{--@endif--}}
+@if(Auth::user()->isAdministrator())
+    <nav class="navbar navbar-dark sticky-top bg-dark" style="font-size: 13px;">
+        <a class="col-sm-3 col-md-2 dash-menu1" href="{{ url('/dashboard') }}"><i class="fa fa-tachometer"
+                                                                                  aria-hidden="true"></i>Blog van Floris</a>
+        {{--@if(Request::getPathInfo()=== '/home')--}}
+        {{--@else--}}
+        {{--@foreach($post as $key => $value)--}}
+        {{--<a class="" href="{{ url('/dashboard/post/'.$value->id) }}" style="color:white !important;">Edit Post</a>--}}
+        {{--@endforeach--}}
+        {{--@endif--}}
 
-        </nav>
-    @endif
-
+    </nav>
+@endif
 
 
 <div id="app">
@@ -151,8 +150,10 @@
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 <!-- Initialize autocomplete menu -->
 <script>
+
     var client = algoliasearch('7ZKK2OFAQ8', '7340ee1903ffd85ffd8a9e35a0e46156');
     var index = client.initIndex('posts');
+
     //initialize autocomplete on search input (ID selector must match)
     autocomplete('#aa-search-input',
             {hint: true}, {
@@ -163,15 +164,12 @@
                 templates: {
                     //'suggestion' templating function used to render a single suggestion
                     suggestion: function (suggestion) {
-//                        suggestion.objectID
 
-                        return "<a href='/post/" + suggestion.objectID + "'>"
-                                + suggestion.title +
-                                "</a>";
-
-//                        return "<a href='/post/"+suggestion.objectID+"'>"
-//                        + suggestion._highlightResult.title.value +
-//                        "</a>";
+                        if(suggestion.draft != 1){
+                            return "<a href='/post/" + suggestion.objectID + "'>"
+                                    + suggestion.title +
+                                    "</a>";
+                        }
                     }
                 }
             });

@@ -32,6 +32,7 @@ class PostController extends Controller
         }
 
         $dom = new \DomDocument();
+        libxml_use_internal_errors(true);
         $dom->loadHtml($post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
 
@@ -156,6 +157,7 @@ class PostController extends Controller
         }
 
         $dom = new \DomDocument();
+        libxml_use_internal_errors(true);
         $dom->loadHtml($post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
 

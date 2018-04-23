@@ -20,9 +20,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Tags</th>
                             <th scope="col">Date</th>
-                            <th scope="col"></th>
                             <th scope="col"><input type="submit" style="background-color: #b8daff; color:white;"
                                                    value="Draft"></th>
                             <th scope="col"><input type="submit" style="background-color: #ef5777; color:white;"
@@ -36,10 +34,8 @@
                             <tr>
                                 <td scope="row">{{$value->id}}</td>
                                 <td><a href="{{ url('/dashboard/post/'.$value->id) }}">{{$value->title}}</a></td>
-                                <td> [...]</td>
                                 <?php echo "<td>Published on: " . date('j F, Y g:ia', strtotime($value->created_at)) . "</td>";  ?>
                                 {{--                    <td>Published on: {{ date_format($value->created_at, 'j F, Y g:ia' )}}</td>--}}
-                                <td><a href="/preview/{{$value->id}}">Preview</a></td>
                                 <td><input type="checkbox" name="post_id_make_public[]" value="{{$value->id}}"></td>
                                 <td><input type="checkbox" name="post_id_delete[]" value="{{$value->id}}"></td>
                                 <input type="text" name="make_draft" value="{{$value->id}}" style="display: none;">
