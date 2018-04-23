@@ -28,7 +28,6 @@ If you want to enable it for the live version go to App/Post.php and uncomment t
 
 TO-DO LIST
 
-- Save image as file instead of Base64.
 - Thumbnails.
 - Categories.
 - Popup when trying to delete a post.

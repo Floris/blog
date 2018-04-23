@@ -15,26 +15,6 @@ class PostController extends Controller
 
     public function createPost(Request $request)
     {
-//        $post = $request->validate([
-//            'title' => 'required',
-//            'post_content' => 'required|'
-//        ]);
-//
-//        $post = new Post;
-//        $post->title = $request->title;
-//        $post->draft = $request->draft;
-//
-//        $aa = $request->tags;
-//        $post->post_content = $request->post_content;
-//
-//        if ($aa != null) {
-//            $post->tags = implode(",", $aa);
-//        }
-//
-//        $post->save();
-//        return redirect('/dashboard');
-        //return back();
-
         $post = $request->validate([
             'title' => 'required',
             'post_content' => 'required|'
@@ -106,23 +86,6 @@ class PostController extends Controller
 
     public function editPost($id, Request $request)
     {
-
-//        $aa = $request->tags;
-//
-//        if ($aa != null) {
-//            $request->tags = implode(",", $aa);
-//        }
-//
-//        $post = Post::find($id);
-//
-//        $post->title = $request->title;
-//        $post->post_content = $request->post_content;
-//        $post->draft = $request->draft;
-//        $post->tags = $request->tags;
-//
-//        $post->save(); //this will UPDATE the record with id=$id
-//
-//        return back();
 
         $post = $request->validate([
             'title' => 'required',
