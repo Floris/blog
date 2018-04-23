@@ -55,11 +55,12 @@
             /*color: #636b6f;*/
             color: #fff;
             padding: 0 25px;
-            font-size: 12px;
+            /*font-size: 12px;*/
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: .1rem;
+            /*letter-spacing: .1rem;*/
             text-decoration: none;
-            text-transform: uppercase;
+            /*text-transform: uppercase;*/
         }
 
         .m-b-md {
@@ -106,15 +107,15 @@
     </style>
 </head>
 <body class="color-change-2x">
-<a href="https://github.com/Floris/blog" target="_blank" style="color: white; z-index:10; cursor:pointer; position:absolute; margin: 18px 30px; font-weight:600;">Github</a>
+<a href="https://github.com/Floris/blog" target="_blank" style="color: white; z-index:10; cursor:pointer; position:absolute; margin: 18px 30px; font-weight:600; text-decoration:none;">Github</a>
 
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-            <a href="{{ url('/home') }}">Bezoek Blog</a>
+            <a href="{{ url('/home') }}" style="font-weight:600;">Bezoek Blog</a>
             @else
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('login') }}" style="font-weight:600;">Login</a>
                 {{--<a href="{{ route('register') }}">Register</a>--}}
                 @endauth
         </div>

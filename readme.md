@@ -33,13 +33,14 @@ TO-DO LIST
 - Categories.
 - Popup when trying to delete a post.
 
+<br />
 
-BUGS
+Bugs
 
--
-
+- Drafts are findable in the search.
 
 <br />
+
 
 :star: INSTALLATION :star:
 
@@ -54,7 +55,7 @@ Make sure you have composer installed
 - php artisan migrate
 - php artisan db:seed
 
-If you don't have Laravel Valet Or
+If you don't have Laravel Valet Or Homestead
 - php artisan serve
 
 <br />

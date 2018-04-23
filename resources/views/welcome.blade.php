@@ -15,7 +15,7 @@
                 Stage Blog van Floris
             </a>
         </div>
-        <div style="
+        <div style="font-weight:600;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
