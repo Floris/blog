@@ -34,12 +34,6 @@ TO-DO LIST
 
 <br />
 
-Bugs
-
-- Drafts are findable in the search.
-
-<br />
-
 
 :star: INSTALLATION :star:
 
